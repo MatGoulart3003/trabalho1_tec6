@@ -23,6 +23,12 @@ routes.post('/api/v1/classes/:ano/:sem/:dia' , (req, res) =>{
     if(!body){
         return res.status(400).end()
     }
+
+    if(ano < 2020 || sem > 2 || dia > 5 || sem < 1 || dia < 1){
+        console.log("deu ruim rapeize")
+        return res.status(404).end
+    }
+    
     body.ano = ano
     body.sem = sem
     body.dia = dia
