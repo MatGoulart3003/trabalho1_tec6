@@ -3,9 +3,8 @@ const routes = express.Router()
 
 let db = [
 
-    { '1': {nome:'Cliente 1', idade: '20'}},
-    { '2': {nome:'Cliente 3', idade: '22'}},
-    { '3': {nome:'Cliente 3', idade: '23'}}
+   {ano:'2022', sem: '4', dia:'1'}
+    
 
 ]
 
@@ -15,13 +14,19 @@ routes.get('/', (req, res) =>{
 })
 
 // Inserir dados
-routes.post('/add' , (req, res) =>{
+routes.post('/api/v1/classes/:ano/:sem/:dia' , (req, res) =>{
     const body = req.body
+    const ano = req.params.ano
+    const sem = req.params.sem
+    const dia = req.params.dia
 
     if(!body){
         return res.status(400).end()
     }
-
+    body.ano = ano
+    body.sem = sem
+    body.dia = dia
+    
     db.push(body)
     return res.json(body)
 
