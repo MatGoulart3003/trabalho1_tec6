@@ -16,9 +16,12 @@ routes.get('/', (req, res) =>{
 routes.post('/api/v1/classes/' , (req, res) =>{
     const body = req.body
     if(!body){
-        return res.status(400).end()
+        return res.status(400).send("Requisição com Erro")
     }
-    validBody(body)
+    if (validBody(body)){
+        console.log("entrei")
+        return res.status(400).send("Requisição com Erro")
+    }
 
     db.push(body)
     return res.json(body)
@@ -27,10 +30,27 @@ routes.post('/api/v1/classes/' , (req, res) =>{
 
 const validBody = (body) => {
     const {ano, semestre, dias_da_sem} = body
-    
-    if(ano == undefined || semestre == undefined || dias_da_sem == undefined){
-        return res.status(404).end
+    let isntValid = true
+   
+    if(ano === undefined || semestre === undefined || dias_da_sem === undefined){        
+         return isntValid
     }
+    if(ano < 2020 || semestre > 2 || semestre < 1){
+        return isntValid
+    }
+    if(dias_da_sem.length < 1 || dias_da_sem.length > 5){
+        return isntValid
+    }if(dias_da_sem){
+        for (let i = 0; i < dias_da_sem.length; i++) {
+            let dia = dias_da_sem[i]
+            if (dia < 1 || dia > 5){
+                return isntValid
+            }            
+        }
+        
+    }
+           
 }
+
 
 module.exports = routes
