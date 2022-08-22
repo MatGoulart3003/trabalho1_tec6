@@ -1,11 +1,12 @@
 const express = require('express')
 const moment = require('moment')
 const routes = express.Router()
+const mensagemErro = "Requisição com Erro"
 
-let db = [
 
 
-]
+
+let db = []
 
 // Buscar Dados
 routes.get('/', (req, res) =>{
@@ -16,13 +17,24 @@ routes.get('/', (req, res) =>{
 routes.post('/api/v1/classes/' , (req, res) =>{
     const body = req.body
     if(!body){
-        return res.status(400).send("Requisição com Erro")
+        return res.status(404).send(mensagemErro)
     }
     if (validBody(body)){
-        console.log("entrei")
-        return res.status(400).send("Requisição com Erro")
+        return res.status(404).send(mensagemErro)
     }
 
+    const {ano, semestre, dias_da_sem} = body
+    
+    if(semestre === 1){    
+        
+        let data = moment(`${ano}-02-01`).format("DD/MM/YYYY")
+       
+    }else{
+        
+        let data = moment(`${ano}-08-01`).format("DD/MM/YYYY")
+       
+    }
+    
     db.push(body)
     return res.json(body)
 
