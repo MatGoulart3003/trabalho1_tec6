@@ -28,6 +28,8 @@ routes.post('/api/v1/classes/' , (req, res) =>{
     if(semestre === 1){    
         
         let data = moment(`${ano}-02-01`).format("DD/MM/YYYY")
+
+        
        
     }else{
         

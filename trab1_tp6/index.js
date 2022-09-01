@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const routes = require('./config/routes')
 
 const app = express()
+const PORT = 21262
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -13,6 +14,6 @@ app.use(cors())
 app.use(routes)
 
 
-app.listen(21262, () => {
+app.listen(PORT, () => {
     console.log(`Express started at http://localhost:21262`)
 })
