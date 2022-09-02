@@ -6,7 +6,7 @@
 ## Executando direto pelo CMD
 
 ```
-git clone https://github.com/MatGoulart3003/trabalho1_tec6.git</p>
+git clone https://github.com/MatGoulart3003/trabalho1_tec6.git
 cd trabalho1_tec6
 cd trab1_tp6
 npm install
