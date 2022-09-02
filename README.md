@@ -1,9 +1,9 @@
 #Trabalho 1 - TP6 - NODE API
 ## Esse repositório contém uma API que recebe um POST contendo: ano, semestre e dias da semana. E devolve todas as datas do período em formato dd/MM
 
-<h1> Existem duas maneiras de executar<h1>
+ Existem duas maneiras de executar
 
-<h1> Primeira: direto pelo servidor npm <h1>
+ Primeira: direto pelo servidor npm 
 
 ## Abra o CMD para clonar o repositório
 
@@ -18,7 +18,7 @@ npm start
 
 
 ```
-git clone https://github.com/MatGoulart3003/trabalho1_tec6.git</p>
+git clone https://github.com/MatGoulart3003/trabalho1_tec6.git
 cd trabalho1_tec6
 cd trab1_tp6
 docker build -t node .
