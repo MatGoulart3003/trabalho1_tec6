@@ -1,11 +1,8 @@
-#Trabalho 1 - TP6 - NODE API
-## Esse repositório contém uma API que recebe um POST contendo: ano, semestre e dias da semana. E devolve todas as datas do período em formato dd/MM
+# Trabalho 1 - TP6 - NODE API
+ Esse repositório contém uma API que recebe um POST contendo: ano, semestre e dias da semana. E devolve todas as datas do período em formato dd/MM
 
- Existem duas maneiras de executar
 
- Primeira: direto pelo servidor npm 
-
-## Abra o CMD para clonar o repositório
+## Executando direto pelo CMD
 
 ```
 git clone https://github.com/MatGoulart3003/trabalho1_tec6.git</p>
@@ -14,7 +11,7 @@ cd trab1_tp6
 npm start
 ```
 
-## Segunda: criando um container
+## Criar um container:
 
 
 ```
