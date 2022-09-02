@@ -9,6 +9,7 @@
 git clone https://github.com/MatGoulart3003/trabalho1_tec6.git</p>
 cd trabalho1_tec6
 cd trab1_tp6
+npm install
 npm start
 ```
 
