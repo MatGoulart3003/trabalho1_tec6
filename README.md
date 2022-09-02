@@ -1,5 +1,5 @@
 # Trabalho 1 - TP6 - NODE API
- Esse repositório contém uma API que recebe um POST contendo: ano, semestre e dias da semana. <br>
+ Esse repositório contém uma API feita em node, utilizando o Express que recebe um POST contendo: ano, semestre e dias da semana. <br>
  Devolve todas as datas do período em formato dd/MM
 
 
