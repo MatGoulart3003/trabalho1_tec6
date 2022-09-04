@@ -49,7 +49,10 @@ const validBody = (body) => {
     if(ano === undefined || semestre === undefined || dias_da_sem === undefined){        
          return isntValid
     }
-    if(ano < 2020 || semestre > 2 || semestre < 1){
+    if(ano > 2029 || ano < 2020 || semestre > 2 || semestre < 1){
+        return isntValid
+    }
+    if (!Array.isArray(dias_da_sem)) {
         return isntValid
     }
     if(dias_da_sem.length < 1 || dias_da_sem.length > 5){
