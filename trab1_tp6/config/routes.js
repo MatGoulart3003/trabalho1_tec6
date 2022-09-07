@@ -3,9 +3,6 @@ const moment = require('moment')
 const routes = express.Router()
 const mensagemErro = "Requisição com Erro"
 
-
-
-
 let db = []
 
 // Buscar Dados
@@ -27,14 +24,23 @@ routes.post('/api/v1/classes/', (req, res) => {
 
     if (semestre === 1) {
 
-        let data = moment(`${ano}-02-01`).format("DD/MM/YYYY")
+        let mesesSem = 4
 
+        dias_da_sem.forEach(diaString => {
+        
+            let diaNumber = Number(diaString)
+            validDay(ano,2, diaNumber, mesesSem)
 
+    });
 
     } else {
 
-        let data = moment(`${ano}-08-01`).format("DD/MM/YYYY")
-
+        let mesesSem = 3
+        dias_da_sem.forEach(diaString =>{
+            let diaNumber = Number(diaString)
+            validDay(ano,8, diaNumber, mesesSem)
+        })
+        
     }
 
     db.push(body)
@@ -71,6 +77,14 @@ routes.post('/api/v1/classes/', (req, res) => {
         }
 
     }
+
+}
+
+const validDay = (ano, mes , diaNumber, mesesSem) => {
+
+    const firstDay = moment(`01/${mes}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
+    const lastDay = moment(`30/${mes+mesesSem}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
+    console.log(`first day é ${firstDay} e lastDay é ${lastDay}`)
 
 }
 
