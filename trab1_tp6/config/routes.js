@@ -29,7 +29,7 @@ routes.post('/api/v1/classes/', (req, res) => {
         dias_da_sem.forEach(diaString => {
         
             let diaNumber = Number(diaString)
-            validDay(ano,2, diaNumber, mesesSem)
+            db.push(validDay(ano,2, diaNumber, mesesSem))
 
     });
 
@@ -43,7 +43,7 @@ routes.post('/api/v1/classes/', (req, res) => {
         
     }
 
-    db.push(body)
+    
     return res.json(body)
 
 })
@@ -81,11 +81,18 @@ routes.post('/api/v1/classes/', (req, res) => {
 }
 
 const validDay = (ano, mes , diaNumber, mesesSem) => {
-
+    let days = []
     const firstDay = moment(`01/${mes}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
     const lastDay = moment(`30/${mes+mesesSem}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
-    console.log(`first day é ${firstDay} e lastDay é ${lastDay}`)
-
+    for (let i = firstDay; i <= lastDay; i++){
+        let data = moment().dayOfYear(i).format("DD/MM").toString()
+        let dataNumber = (moment(data,"DD/MM/YYYY").get('day'))
+        
+         if (dataNumber === diaNumber){
+            days.push(data)            
+        }
+    }
+    return days
 }
 
 
