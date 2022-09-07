@@ -12,6 +12,7 @@ routes.get('/', (req, res) => {
 
 // Inserir dados
 routes.post('/api/v1/classes/', (req, res) => {
+    db = []
     const body = req.body
     if (!body) {
         return res.status(404).send(mensagemErro)
@@ -28,8 +29,9 @@ routes.post('/api/v1/classes/', (req, res) => {
     } else {
         validDiaNumber(3,8, ano,dias_da_sem)
    }
-      
-    return res.status(200).send(db)
+    
+  
+return res.status(200).send(db)
 
 })
 
@@ -65,27 +67,30 @@ const validBody = (body) => {
 
 }
 
-const validDay = (ano, mes , diaNumber, mesesSem) => {
-    let days = []
+const validDay = (ano, mes , diasNumber, mesesSem) => {
+    
     const firstDay = moment(`01/${mes}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
     const lastDay = moment(`30/${mes+mesesSem}/${ano}`, "DD/MM/YYYY").get('dayOfYear')
     for (let i = firstDay; i <= lastDay; i++){
         let data = moment().dayOfYear(i).format("DD/MM").toString()
         let dataNumber = (moment(data,"DD/MM/YYYY").get('day'))
         
-         if (dataNumber === diaNumber){
-            days.push(data)            
+         if (diasNumber.includes(dataNumber)){
+            db.push(data)            
         }
     }
-    return days
+    
 }
 
 const validDiaNumber = (mesesSem, numMesIni,ano, dias_da_sem) => { 
     
+    let diasNumber = []
         dias_da_sem.forEach(diaString =>{
             let diaNumber = Number(diaString)
-            db.push(validDay(ano, numMesIni, diaNumber, mesesSem))
+            diasNumber.push(diaNumber)
         })
+
+         validDay(ano, numMesIni, diasNumber, mesesSem)
 }
 
 module.exports = routes
