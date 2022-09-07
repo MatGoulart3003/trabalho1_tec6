@@ -23,32 +23,17 @@ routes.post('/api/v1/classes/', (req, res) => {
     const { ano, semestre, dias_da_sem } = body
 
     if (semestre === 1) {
-
-        let mesesSem = 4
-
-        dias_da_sem.forEach(diaString => {
-        
-            let diaNumber = Number(diaString)
-            db.push(validDay(ano,2, diaNumber, mesesSem))
-
-    });
+        validDiaNumber(4,2, ano, dias_da_sem)
 
     } else {
-
-        let mesesSem = 3
-        dias_da_sem.forEach(diaString =>{
-            let diaNumber = Number(diaString)
-            validDay(ano,8, diaNumber, mesesSem)
-        })
-        
-    }
-
-    
-    return res.json(body)
+        validDiaNumber(3,8, ano,dias_da_sem)
+   }
+      
+    return res.status(200).send(db)
 
 })
 
-    const validBody = (body) => {
+const validBody = (body) => {
     const { ano, semestre, dias_da_sem } = body
     let isntValid = true
 
@@ -95,5 +80,12 @@ const validDay = (ano, mes , diaNumber, mesesSem) => {
     return days
 }
 
+const validDiaNumber = (mesesSem, numMesIni,ano, dias_da_sem) => { 
+    
+        dias_da_sem.forEach(diaString =>{
+            let diaNumber = Number(diaString)
+            db.push(validDay(ano, numMesIni, diaNumber, mesesSem))
+        })
+}
 
 module.exports = routes
